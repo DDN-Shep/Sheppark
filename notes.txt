@@ -1,0 +1,19 @@
+https://sheppark-ddn-shep.c9.io/
+
+async
+express --> unintalled
+socket.io
+
+npm install -g 
+    nodemon
+    bower
+    grunt-cli
+
+npm install --save
+    express
+    jade
+
+npm install --save-dev
+    grunt
+    grunt-contrib-sass
+    grunt-contrib-watch

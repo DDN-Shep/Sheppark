@@ -1,0 +1,38 @@
+doctype html
+html(lang='en')
+head
+    include meta
+
+    link(rel='shortcut icon', href='/images/favicon.ico')
+
+    title Sheppark
+
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/styles/main.css')
+
+    block style
+
+    <!--[if lt IE 9]>
+    script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+    script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+    <![endif]-->
+body
+    include nav
+
+    block content
+    .plx
+      header
+        h1 Blog header
+        p A short and simple blog header caption
+      main
+        .container
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro. Harum odio, sapiente dicta, eum quidem porro atque quisquam impedit officia ullam minus, laudantium vel eaque doloribus rem.
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro. Harum odio, sapiente dicta, eum quidem porro atque quisquam impedit officia ullam minus, laudantium vel eaque doloribus rem.
+      footer
+        p The End
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    
+    script(src='/scripts/main.js')
+    
+    block script

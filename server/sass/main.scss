@@ -1,0 +1,148 @@
+@import url('//fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font: {
+    family: 'Bad Script';
+    size: 1em;
+  }
+  color: #fff;
+}
+
+header, footer {
+  position: relative;
+  padding: 5% 0 5%;
+  width: 100%;
+  width: 100vw;
+
+  &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: {
+      image: url('//unsplash.it/1500/1500?image=558');
+      repeat: no-repeat;
+      size: cover;
+    };
+    min-height: 100%;
+    min-height: 100vh;
+    z-index: -1;
+  }
+
+  * {
+    letter-spacing: 0.2em;
+    text-align: center;
+    padding: 1em 0;
+  }
+  
+  h1 {
+    transition: opacity .5s ease;
+    opacity: 1;
+  }
+  
+  &.small {
+    h1 {
+      opacity: 0;
+    }
+  }
+
+  p {
+    background: {
+      color: hsla(0, 0%, 100%, 0.1);
+    };
+  }
+}
+
+main {
+  position: relative;
+  background: { 
+    color: #fff;
+  };
+  padding: 10%;
+  min-height: 25rem;
+  min-height: 100vh;
+  z-index: 2;
+  color: #333;
+}
+
+nav {
+  &.navbar {
+    padding: 0 10%;
+    width: 100%;
+    background: {
+      color: rgba(255, 255, 255, 0);
+      clip: padding-box;
+    };
+    border: {
+      top-right-radius: 0;
+      bottom-right-radius: 0;
+    };
+    transition: all .5s ease;
+
+    &, * {
+      color: #fff;
+    }
+
+    ul {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      overflow: hidden;
+
+      li {
+        flex: 1 100%;
+        white-space: nowrap;
+      }
+    }
+
+    a:hover {
+      background: none;
+      text-decoration: underline;
+    }
+
+    &.small {
+      padding: 5% 0;
+      width: 150px;
+      border: {
+        bottom-right-radius: 10px;
+      };
+
+      &, * {
+        color: #333;
+      }
+
+      ul {
+        flex-flow: row wrap;
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+.plx {
+  perspective: 1px;
+  perspective-origin-x: 100%;
+  transform-style: preserve-3d;
+  overflow: {
+    x: hidden;
+    y: auto;
+  };
+  height: 100%;
+  width: 100%;
+
+  & > header,
+  & > footer {
+    transform-style: inherit;
+
+    &:before {
+      transform-origin: center center 0;
+      transform: translateZ(-1px) scale(2);
+    }
+  }
+}
