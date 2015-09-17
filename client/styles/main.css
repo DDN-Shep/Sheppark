@@ -22,6 +22,7 @@ header, footer {
     bottom: 0;
     background-image: url("//unsplash.it/1500/1500?image=558");
     background-repeat: no-repeat;
+    background-position: 0 -75px;
     background-size: cover;
     min-height: 100%;
     min-height: 100vh;
@@ -33,50 +34,115 @@ header, footer {
   header h1, footer h1 {
     transition: opacity .5s ease;
     opacity: 1; }
-  header.small h1, footer.small h1 {
-    opacity: 0; }
+  header.small, footer.small {
+    font-size: 100%; }
+    header.small h1, footer.small h1 {
+      opacity: 0; }
   header p, footer p {
     background-color: rgba(255, 255, 255, 0.1); }
 
 main {
   position: relative;
   background-color: #fff;
-  padding: 10%;
+  padding: 5% 0;
   min-height: 25rem;
   min-height: 100vh;
   z-index: 2;
   color: #333; }
 
-nav.navbar {
-  padding: 0 10%;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0);
-  background-clip: padding-box;
+nav {
+  font-size: 1.25em; }
+  nav.navbar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    background-clip: padding-box;
+    transition: all .5s ease; }
+    nav.navbar, nav.navbar * {
+      color: #fff; }
+    nav.navbar ul {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      overflow: hidden; }
+      nav.navbar ul li {
+        flex: 1 100%;
+        white-space: nowrap;
+        text-align: center; }
+        nav.navbar ul li a {
+          display: block;
+          padding: 10px 15px; }
+    nav.navbar a:hover {
+      background: none;
+      text-decoration: underline; }
+    nav.navbar.small {
+      font-size: 100%;
+      padding: 5% 0;
+      width: 16.666667%; }
+      nav.navbar.small, nav.navbar.small * {
+        color: #333; }
+      nav.navbar.small ul {
+        flex-flow: row wrap;
+        justify-content: flex-start; }
+        nav.navbar.small ul li {
+          text-align: right; }
+    @media (max-width: 61.9em) {
+      nav.navbar, nav.navbar * {
+        color: #333; }
+      nav.navbar, nav.navbar.small {
+        width: 150px;
+        padding: 0; }
+      nav.navbar {
+        top: 2%;
+        left: 2%;
+        font-size: 100%; }
+        nav.navbar ul {
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          background-color: #fff;
+          border: 0.0625rem solid #e5e5e5;
+          border-radius: .25rem; }
+          nav.navbar ul li {
+            flex: 1 100%;
+            text-align: right; } }
+    @media (max-width: 61.9em) and (max-height: 25em) {
+      nav.navbar, nav.navbar.small {
+        width: 300px; }
+      nav.navbar ul li {
+        flex: 1 50%; } }
+
+#top-nav-toggle {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  z-index: 9999; }
+  #top-nav-toggle .btn {
+    border-radius: .25rem; }
+  #top-nav-toggle .btn:before {
+    display: inline-block;
+    content: '\2630';
+    font-family: 'FontAwesome';
+    font-size: 1.25em;
+    font-weight: 600;
+    width: 1.28571429em;
+    text-align: center; }
+
+#top-nav:not(.hidden-md-down) + #top-nav-toggle .btn {
   border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  transition: all .5s ease; }
-  nav.navbar, nav.navbar * {
-    color: #fff; }
-  nav.navbar ul {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    overflow: hidden; }
-    nav.navbar ul li {
-      flex: 1 100%;
-      white-space: nowrap; }
-  nav.navbar a:hover {
-    background: none;
-    text-decoration: underline; }
-  nav.navbar.small {
-    padding: 5% 0;
-    width: 150px;
-    border-bottom-right-radius: 10px; }
-    nav.navbar.small, nav.navbar.small * {
-      color: #333; }
-    nav.navbar.small ul {
-      flex-flow: row wrap;
-      justify-content: flex-start; }
+  border-bottom-left-radius: 0; }
+#top-nav:not(.hidden-md-down) + #top-nav-toggle .btn:before {
+  content: '\00D7';
+  font-family: 'FontAwesome';
+  font-size: 1.25em;
+  font-weight: 600;
+  width: 1.28571429em;
+  text-align: center; }
+
+#back-to-top {
+  position: fixed;
+  right: 5%;
+  bottom: 2%;
+  z-index: 9999;
+  display: none; }
 
 .plx {
   perspective: 1px;
@@ -91,5 +157,11 @@ nav.navbar {
     .plx > header:before, .plx > footer:before {
       transform-origin: center center 0;
       transform: translateZ(-1px) scale(2); }
+
+.blog-post + .blog-post {
+  margin-top: 1.25rem; }
+
+.card-link + .card-link {
+  margin-left: 1rem; }
 
 /*# sourceMappingURL=main.css.map */

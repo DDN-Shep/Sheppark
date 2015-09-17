@@ -28,6 +28,7 @@ header, footer {
     background: {
       image: url('//unsplash.it/1500/1500?image=558');
       repeat: no-repeat;
+      position: 0 -75px;
       size: cover;
     };
     min-height: 100%;
@@ -40,13 +41,15 @@ header, footer {
     text-align: center;
     padding: 1em 0;
   }
-  
+
   h1 {
     transition: opacity .5s ease;
     opacity: 1;
   }
-  
+
   &.small {
+    font-size: 100%;
+
     h1 {
       opacity: 0;
     }
@@ -64,7 +67,7 @@ main {
   background: { 
     color: #fff;
   };
-  padding: 10%;
+  padding: 5% 0;
   min-height: 25rem;
   min-height: 100vh;
   z-index: 2;
@@ -72,16 +75,13 @@ main {
 }
 
 nav {
+  font-size: 1.25em;
+
   &.navbar {
-    padding: 0 10%;
     width: 100%;
     background: {
       color: rgba(255, 255, 255, 0);
       clip: padding-box;
-    };
-    border: {
-      top-right-radius: 0;
-      bottom-right-radius: 0;
     };
     transition: all .5s ease;
 
@@ -98,6 +98,12 @@ nav {
       li {
         flex: 1 100%;
         white-space: nowrap;
+        text-align: center;
+
+        a {
+          display: block;
+          padding: 10px 15px;
+        }
       }
     }
 
@@ -107,11 +113,9 @@ nav {
     }
 
     &.small {
+      font-size: 100%;
       padding: 5% 0;
-      width: 150px;
-      border: {
-        bottom-right-radius: 10px;
-      };
+      width: 16.666667%;
 
       &, * {
         color: #333;
@@ -120,9 +124,114 @@ nav {
       ul {
         flex-flow: row wrap;
         justify-content: flex-start;
+
+        li {
+          text-align: right;
+        }
+      }
+    }
+
+    @media (max-width: 61.9em) {
+      &, * {
+        color: #333;
+      }
+
+      &, &.small {
+        width: 150px;
+        padding: 0;
+      }
+
+      & {
+        top: 2%;
+        left: 2%;
+        font-size: 100%;
+
+        ul {
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          background: {
+            color: #fff;
+          };
+          border: 0.0625rem solid #e5e5e5;
+          border: {
+            radius: .25rem;
+          };
+
+          li {
+            flex: 1 100%;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 61.9em) and (max-height: 25em) {
+      &, &.small {
+        width: 300px;
+      }
+      
+      & {
+        ul {
+          li {
+            flex: 1 50%;
+          }
+        }
       }
     }
   }
+}
+
+#top-nav-toggle {
+  position: fixed;
+  top: 2%;
+  left: 2%;
+  z-index: 9999;
+
+  .btn {
+    border: {
+      radius: .25rem;
+    };
+  }
+
+  .btn:before {
+    display: inline-block;
+    content: '\2630';
+    font: {
+      family: 'FontAwesome';
+      size: 1.25em;
+      weight: 600;
+    };
+    width: 1.28571429em;
+    text-align: center;
+  }
+}
+
+#top-nav:not(.hidden-md-down) + #top-nav-toggle {
+  .btn {
+    border: {
+      top-right-radius: 0;
+      bottom-left-radius: 0;
+    };
+  }
+
+  .btn:before {
+    content: '\00D7';
+    font: {
+      family: 'FontAwesome';
+      size: 1.25em;
+      weight: 600;
+    };
+    width: 1.28571429em;
+    text-align: center;
+  }
+}
+
+#back-to-top {
+  position: fixed;
+  right: 5%;
+  bottom: 2%;
+  z-index: 9999;
+  display: none;
 }
 
 .plx {
@@ -144,5 +253,17 @@ nav {
       transform-origin: center center 0;
       transform: translateZ(-1px) scale(2);
     }
+  }
+}
+
+.blog-post {
+  & + .blog-post {
+    margin-top: 1.25rem;
+  }
+}
+
+.card-link {
+  & + .card-link {
+    margin-left: 1rem;
   }
 }

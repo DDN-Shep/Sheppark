@@ -1,0 +1,21 @@
+{
+  "name": "Sheppark",
+  "version": "0.0.1",
+  "homepage": "https://github.com/DDN-Shep/Sheppark",
+  "authors": [
+    "Andrew Sheppard"
+  ],
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
