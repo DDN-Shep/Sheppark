@@ -1,0 +1,41 @@
+extends ../shared/layout
+
+block main
+  .container
+    .row
+      .col-md-8.col-lg-offset-2.col-lg-6
+        blog#home(collection='home')
+      .col-md-4.col-lg-3
+        .card
+          img.card-img-top(src='//unsplash.it/500/250/?image=64', alt='My image', height='100%', width='100%')
+          .card-block
+            h4.card-title About me
+            p.card-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro.
+          #about-me-links.card-block
+            a.card-link(href='#')
+              i.fa.fa-instagram
+            a.card-link(href='#')
+              i.fa.fa-facebook
+            a.card-link(href='#')
+              i.fa.fa-vk
+            a.card-link(href='#')
+              i.fa.fa-pinterest-p
+            a.card-link(href='#')
+              i.fa.fa-linkedin
+        .card
+          .card-block
+            h4.card-title Find it...
+            input.form-control(type='text', placeholder="Search here...")
+        .card
+          .card-block
+            h4.card-title Recently...
+          .list-group.list-group-flush
+            a.list-group-item(href='#home')
+              h4.list-group-item-heading List group item heading
+              p.list-group-item-text Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            a.list-group-item(href='#')
+              h4.list-group-item-heading List group item heading
+              p.list-group-item-text Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.
+            a.list-group-item(href='#')
+              h4.list-group-item-heading List group item heading
+              p.list-group-item-text Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.

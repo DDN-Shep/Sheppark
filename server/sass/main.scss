@@ -9,13 +9,35 @@ html, body {
     size: 1em;
   }
   color: #fff;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+object, embed, input::-moz-focus-inner {
+  outline: 0;
+  border: 0;
+}
+
+a, a[href], a:active, a:focus, a:hover, a:link, a:visited {
+  outline: 0;
 }
 
 header, footer {
   position: relative;
   padding: 5% 0 5%;
-  width: 100%;
   width: 100vw;
+  overflow: hidden;
+
+  /* Hack;
+  Firefox hack to retain parallax effect, where as other browsers require 
+  hidden overflow to prevent header & footer warping the .plx height.
+  */
+  @-moz-document url-prefix() { 
+    & {
+      overflow: visible;
+    }
+  }
 
   &:before {
     display: block;
@@ -28,10 +50,9 @@ header, footer {
     background: {
       image: url('//unsplash.it/1500/1500?image=558');
       repeat: no-repeat;
-      position: 0 -75px;
+      position: 0 -75px; // TODO: Adjust accordingly for chosen image
       size: cover;
     };
-    min-height: 100%;
     min-height: 100vh;
     z-index: -1;
   }
@@ -68,7 +89,6 @@ main {
     color: #fff;
   };
   padding: 5% 0;
-  min-height: 25rem;
   min-height: 100vh;
   z-index: 2;
   color: #333;
@@ -80,7 +100,6 @@ nav {
   &.navbar {
     width: 100%;
     background: {
-      color: rgba(255, 255, 255, 0);
       clip: padding-box;
     };
     transition: all .5s ease;
@@ -94,6 +113,9 @@ nav {
       flex-flow: row nowrap;
       justify-content: center;
       overflow: hidden;
+      background: {
+        clip: padding-box;
+      };
 
       li {
         flex: 1 100%;
@@ -114,7 +136,6 @@ nav {
 
     &.small {
       font-size: 100%;
-      padding: 5% 0;
       width: 16.666667%;
 
       &, * {
@@ -122,11 +143,20 @@ nav {
       }
 
       ul {
+        position: relative;
         flex-flow: row wrap;
         justify-content: flex-start;
+        overflow: visible;
 
         li {
           text-align: right;
+          
+          &:focus, &:hover {
+            a {
+              text-decoration: none;
+              color: #0275D8;
+            }
+          }
         }
       }
     }
@@ -140,7 +170,7 @@ nav {
         width: 150px;
         padding: 0;
       }
-
+      
       & {
         top: 2%;
         left: 2%;
@@ -150,7 +180,7 @@ nav {
           flex-flow: row wrap;
           justify-content: flex-start;
           background: {
-            color: #fff;
+            color: rgba(255, 255, 255, 0.9);
           };
           border: 0.0625rem solid #e5e5e5;
           border: {
@@ -169,12 +199,10 @@ nav {
       &, &.small {
         width: 300px;
       }
-      
-      & {
-        ul {
-          li {
-            flex: 1 50%;
-          }
+
+      ul {
+        li {
+          flex: 1 50%;
         }
       }
     }
@@ -191,18 +219,18 @@ nav {
     border: {
       radius: .25rem;
     };
-  }
 
-  .btn:before {
-    display: inline-block;
-    content: '\2630';
-    font: {
-      family: 'FontAwesome';
-      size: 1.25em;
-      weight: 600;
-    };
-    width: 1.28571429em;
-    text-align: center;
+    &:before {
+      display: inline-block;
+      content: '\2630';
+      font: {
+        family: 'FontAwesome';
+        size: 1.25em;
+        weight: 600;
+      };
+      width: 1.28571429rem;
+      text-align: center;
+    }
   }
 }
 
@@ -212,17 +240,10 @@ nav {
       top-right-radius: 0;
       bottom-left-radius: 0;
     };
-  }
 
-  .btn:before {
-    content: '\00D7';
-    font: {
-      family: 'FontAwesome';
-      size: 1.25em;
-      weight: 600;
-    };
-    width: 1.28571429em;
-    text-align: center;
+    &:before {
+      content: '\00d7';
+    }
   }
 }
 
@@ -236,7 +257,6 @@ nav {
 
 .plx {
   perspective: 1px;
-  perspective-origin-x: 100%;
   transform-style: preserve-3d;
   overflow: {
     x: hidden;
@@ -250,20 +270,63 @@ nav {
     transform-style: inherit;
 
     &:before {
-      transform-origin: center center 0;
       transform: translateZ(-1px) scale(2);
     }
   }
 }
 
-.blog-post {
-  & + .blog-post {
+blog-post {
+  & + & {
     margin-top: 1.25rem;
+  }
+  .figure {
+    display: block;
+
+    .figure-caption {
+      margin-top: -2.75em;
+      margin-right: .5em;
+
+      & > a {
+        padding: 0 .5em;
+        background: {
+          color: hsla(0, 0%, 100%, 0.25);
+        };
+        border: {
+          radius: .25rem;
+        };
+        cursor: pointer;
+        transition: background-color .5s ease;
+
+        &:hover {
+          text-decoration: none;
+          background: {
+            color: hsla(0, 0%, 100%, 0.75);
+          };
+        }
+      }
+    }
   }
 }
 
-.card-link {
-  & + .card-link {
-    margin-left: 1rem;
+#about-me-links {
+  display: flex;
+  justify-content: space-around;
+  
+  & > .card-link {
+    margin: .5rem;
+  }
+}
+
+.pager {
+  & > .active {
+    a, span {
+      &, &:hover, &:focus {
+        z-index: 2;
+        color: #fff;
+        cursor: default;
+        background-color: #0275d8;
+        border-color: #0275d8;
+      }
+    }
   }
 }

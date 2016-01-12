@@ -15,5 +15,12 @@ npm install --save
 
 npm install --save-dev
     grunt
+    // grunt-autoprefixer // npm update caniuse-db = Update the vendor prefix database
     grunt-contrib-sass
     grunt-contrib-watch
+    grunt-postcss pixrem autoprefixer cssnano
+    grunt-riot riot
+    
+    // TODO: protractor karma
+
+bower install

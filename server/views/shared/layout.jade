@@ -1,13 +1,13 @@
 doctype html
 html(lang='en')
-head
+  head
     include meta
 
     link(rel='shortcut icon', href='/images/favicon.ico')
 
     title Sheppark
 
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/styles/main.css')
 
@@ -17,65 +17,27 @@ head
     script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
     script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
     <![endif]-->
-body
+  body
     include nav
-  
+      
     #back-to-top.btn.btn-info
-      span Back to Top 
-      i.fa.fa-arrow-up
-
+      span Back to top
+      i.fa.fa-arrow-up.fa-fw
+      
     .plx
       header
         h1 Blog header
         p A short and simple blog header caption
       main
-        block contentw
-        .container
-          .row
-            .col-md-offset-2.col-md-7
-              .card.blog-post
-                .card-block
-                  h4.card-title Post title
-                  h6.card-subtitle.text-muted Post subtitle
-                img(src='//unsplash.it/500/250/?image=104', alt='Post image', height='100%', width='100%')
-                .card-block
-                  p.card-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro. Harum odio, sapiente dicta, eum quidem porro atque quisquam impedit officia ullam minus, laudantium vel eaque doloribus rem.
-                  a.card-link(href='#') Read more
-              .card.blog-post
-                .card-block
-                  h4.card-title Post title
-                  h6.card-subtitle.text-muted Post subtitle
-                img(src='//unsplash.it/500/250/?image=431', alt='Post image', height='100%', width='100%')
-                .card-block
-                  p.card-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro. Harum odio, sapiente dicta, eum quidem porro atque quisquam impedit officia ullam minus, laudantium vel eaque doloribus rem.
-                  a.card-link(href='#') Read more
-            .col-md-3
-              .card
-                img.card-img-top(src='//unsplash.it/500/250/?image=64', alt='My image', height='100%', width='100%')
-                .card-block
-                  h4.card-title About me
-                  p.card-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro.
-                .card-block
-                  a.card-link(href='#')
-                    i.fa.fa-instagram
-                  a.card-link(href='#')
-                    i.fa.fa-facebook
-                  a.card-link(href='#')
-                    i.fa.fa-vk
-                  a.card-link(href='#')
-                    i.fa.fa-linkedin
-                .card-block
-                  h4.card-title Find it...
-                  input.form-control(type='text', placeholder="Search here...")
-                ul.list-group.list-group-flush
-                  li.list-group-item Cras justo odio
-                  li.list-group-item Dapibus ac facilisis in
-                  li.list-group-item Vestibulum at eros
+        block main
       footer
         p The End
 
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/riot/2.2.4/riot.min.js')
     
+    script(src='/scripts/tag.js')
     script(src='/scripts/main.js')
     
     block script

@@ -10,26 +10,32 @@ var config = require('./config')[env],
 
 var routes = {
     api: {
-        //todo: require('./server/routes/api/todo')
+        blog: require('./server/routes/api/blog')
     },
     index: require('./server/routes/index')
 };
-
-require('./server/socket/server')(server);
 
 app.set('views', config.path.views);
 app.set('view engine', config.engine.view);
 
 app.use(express.static(config.path.client));
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  if (next) next();
+});
+
 app.use('/', routes.index);
+
+app.use('/api/blog', routes.api.blog);
 
 app.use('*', function(req, res, next) {
     // 404
 });
 
 server.listen(config.port, config.ip, function() {
-    var addr = server.address();
+    var sa = server.address();
 
-    console.log('Sheppark server listening at', addr.address + ':' + addr.port);
+    console.log('Sheppark server listening at', sa.address + ':' + sa.port);
 });

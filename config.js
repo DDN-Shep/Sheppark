@@ -16,6 +16,7 @@ module.exports = {
         path: {
             client: path.join(__dirname, 'client'),
             //favicon: path.resolve(__dirname, 'public/images/favicon.ico'),
+            uploads: path.join(__dirname, 'server/uploads'),
             views: path.join(__dirname, 'server/views')
         },
         db: {

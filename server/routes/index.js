@@ -7,7 +7,7 @@ module.exports = (function() {
   });
 
   this.get('/', function(req, res) {
-    res.render('shared/layout');
+    res.render('home/index');
   });
   
   return this;
