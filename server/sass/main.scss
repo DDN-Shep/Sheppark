@@ -29,16 +29,6 @@ header, footer {
   width: 100vw;
   overflow: hidden;
 
-  /* Hack;
-  Firefox hack to retain parallax effect, where as other browsers require 
-  hidden overflow to prevent header & footer warping the .plx height.
-  */
-  @-moz-document url-prefix() { 
-    & {
-      overflow: visible;
-    }
-  }
-
   &:before {
     display: block;
     content: '';
@@ -80,6 +70,19 @@ header, footer {
     background: {
       color: hsla(0, 0%, 100%, 0.1);
     };
+  }
+}
+
+/* Hack;
+Firefox hack to retain parallax effect, where as other browsers require 
+hidden overflow to prevent header & footer warping the .plx height.
+*/
+@-moz-document url-prefix() { 
+  header, footer {
+    overflow: visible;
+  }
+  footer {
+    max-height: 250px;
   }
 }
 

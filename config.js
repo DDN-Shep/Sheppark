@@ -12,7 +12,7 @@ module.exports = {
             }
         },
         ip: process.env.IP || '0.0.0.0',
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 80,
         path: {
             client: path.join(__dirname, 'client'),
             //favicon: path.resolve(__dirname, 'public/images/favicon.ico'),
