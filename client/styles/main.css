@@ -1,4 +1,4 @@
-@import url("//fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic");
+@import url("https://fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic");
 html, body {
   height: 100%;
   margin: 0;
@@ -21,14 +21,7 @@ header, footer {
   position: relative;
   padding: 5% 0 5%;
   width: 100vw;
-  overflow: hidden;
-  /* Hack;
-  Firefox hack to retain parallax effect, where as other browsers require 
-  hidden overflow to prevent header & footer warping the .plx height.
-  */ }
-@-moz-document url-prefix() {
-  header, footer {
-    overflow: visible; } }
+  overflow: hidden; }
   header:before, footer:before {
     display: block;
     content: '';
@@ -37,7 +30,7 @@ header, footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("//unsplash.it/1500/1500?image=558");
+    background-image: url("https://unsplash.it/1500/1500?image=681");
     background-repeat: no-repeat;
     background-position: 0 -75px;
     background-size: cover;
@@ -58,6 +51,16 @@ header, footer {
     background-color: #ffffff;
     background-color: rgba(255, 255, 255, 0.1); }
 
+/* Hack;
+Firefox hack to retain parallax effect, where as other browsers require 
+hidden overflow to prevent header & footer warping the .plx height.
+*/
+@-moz-document url-prefix() {
+  header, footer {
+    overflow: visible; }
+
+  footer {
+    max-height: 250px; } }
 main {
   position: relative;
   background-color: #fff;
@@ -196,6 +199,9 @@ nav {
     .plx > header:before, .plx > footer:before {
       -webkit-transform: translateZ(-1px) scale(2);
               transform: translateZ(-1px) scale(2); }
+  @media (min-width: 48em) {
+    .plx .container {
+      max-width: 100rem; } }
 
 blog-post + blog-post {
   margin-top: 20px;
@@ -234,3 +240,81 @@ blog-post .figure {
   cursor: default;
   background-color: #0275d8;
   border-color: #0275d8; }
+
+.ddn-profile {
+  overflow: hidden; }
+  .ddn-profile > .card-img-top {
+    height: 100px;
+    background-image: url("https://unsplash.it/1500/1500?image=681");
+    background-size: cover;
+    background-repeat: no-repeat;
+    white-space: nowrap; }
+    .ddn-profile > .card-img-top > .card-title {
+      margin-top: 30px;
+      color: #fff;
+      font-size: 2em; }
+    .ddn-profile > .card-img-top > .card-title, .ddn-profile > .card-img-top > .card-subtitle {
+      margin-left: 100px;
+      padding: .2em;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .ddn-profile > .card-img-top > .card-subtitle {
+      font-weight: bold; }
+    @media (max-width: 30em) {
+      .ddn-profile > .card-img-top > .card-title {
+        margin-top: 40px;
+        font-size: 1.5em; } }
+    @media (max-width: 30em) {
+      .ddn-profile > .card-img-top > .card-title {
+        margin-top: 40px;
+        font-size: 1.5em; } }
+    @media (min-width: 48em) {
+      .ddn-profile > .card-img-top {
+        white-space: normal; }
+      .ddn-profile > .card-img-top > .card-title {
+        margin: 10px 0 0 45%;
+        font-size: 1.5em; }
+      .ddn-profile > .card-img-top > .card-subtitle {
+        margin: 10px 0 0 0;
+        font-size: .9em; } }
+    @media (min-width: 62em) {
+      .ddn-profile > .card-img-top > .card-title {
+        margin: 40px 0 0 80px; } }
+    @media (min-width: 75em) {
+      .ddn-profile > .card-img-top {
+        white-space: nowrap; }
+      .ddn-profile > .card-img-top > .card-title {
+        margin: 30px 0 0 0;
+        font-size: 2em; }
+      .ddn-profile > .card-img-top > .card-title, .ddn-profile > .card-img-top > .card-subtitle {
+        margin-left: 25%; } }
+  .ddn-profile .card-block:not(:first-child) > .card-text {
+    margin-top: 25px; }
+  .ddn-profile .ddn-profile-image {
+    float: left;
+    margin-top: 25px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    max-height: 75px; }
+
+.twitter-typeahead {
+  width: 100%; }
+  .twitter-typeahead .tt-hint {
+    color: #999; }
+  .twitter-typeahead .tt-menu {
+    width: 350px;
+    margin: 12px 0;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: .25rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; }
+  .twitter-typeahead .tt-empty,
+  .twitter-typeahead .tt-suggestion {
+    padding: 3px 20px; }
+  .twitter-typeahead .tt-suggestion:hover, .twitter-typeahead .tt-suggestion.tt-cursor {
+    cursor: pointer;
+    color: #fff;
+    background-color: #0275d8; }

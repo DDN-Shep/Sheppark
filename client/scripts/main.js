@@ -1,5 +1,36 @@
 ;(function() {
   'use strict';
+  
+  this.bh = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace(['title']),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    identify: function(o) { return o._id; },
+    sufficient: 5,
+    prefetch: {
+      url: '/api/blog',
+      cache: true,
+      ttl: 86400000 // ms in 1 Day
+    },
+    remote: {
+      url: '/api/blog?q=%QUERY',
+      wildcard: '%QUERY'
+    }
+  });
+  
+  this.bh.get = function() {
+    var get = this.get;
+    
+    return function get(q, sync, async) {
+      return q && (this.q = q) ? get.apply(this, arguments) 
+        : this.q ? get.call(this, this.q, sync, async)
+        : this.index.datums;
+    }.bind(this);
+  }.call(this.bh);
+  
+}).call(window);
+
+;(function() {
+  'use strict';
 
   var $window = $('.plx'),
       $nav = $('.navbar'),
@@ -13,7 +44,7 @@
           $header.addClass(small);
           $top.fadeIn();
 
-          if (top > 250) $nav.addClass(small);
+          if (top > 300) $nav.addClass(small);
           else $nav.removeClass(small);
         }
         else {
@@ -43,34 +74,7 @@
 
 $(function() {
   'use strict';
-
-  var get = function get(url, options) {
-    return new Promise(function(resolve, reject) {
-      var o = options || {},
-          req = new XMLHttpRequest();
-
-      if (o.config) {
-        // TODO
-      }
-
-      req.open('GET', url, true);
-      req.onload = function() {
-        if (req.status >= 200 && req.status < 400) {
-          resolve(req.responseText, req.status);
-        } 
-        else {
-          reject(Error(req.statusText), req.responseText, req.status);
-        }
-      };
-
-      req.onerror = function() {
-        reject(Error('Connection error'));
-      };
-
-      req.send();
-    });
-  };
-
+  
   var router = function router(collection, id, action) {
     console.log('router', collection, id, action);
     //console.log(this);
@@ -80,5 +84,24 @@ $(function() {
 
   riot.route(router);
   riot.mount('blog', { section: 'home' });
+  riot.mount('blog-search', {});
   riot.route.exec(router);
 });
+
+/*
+;(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+ga('create', # {
+    ga.ru.code
+}, 'auto');
+ga('send', 'pageview');
+*/

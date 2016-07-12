@@ -88,6 +88,6 @@ module.exports = function(grunt) {
 			return ':' + (arg || 'local');
 		}(arg);
 
-		grunt.task.run(['riot', 'sass', 'postcss', 'concat', 'uglify']);
+		grunt.task.run(['riot', 'sass', 'postcss']);//, 'concat', 'uglify']);
 	});
 }

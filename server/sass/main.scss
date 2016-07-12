@@ -1,4 +1,7 @@
-@import url('//fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Bad+Script&subset=latin,cyrillic');
+
+// 558, 681, 827, 869
+$background-url: 'https://unsplash.it/1500/1500?image=681';
 
 html, body {
   height: 100%;
@@ -38,7 +41,7 @@ header, footer {
     right: 0;
     bottom: 0;
     background: {
-      image: url('//unsplash.it/1500/1500?image=558');
+      image: url($background-url);
       repeat: no-repeat;
       position: 0 -75px; // TODO: Adjust accordingly for chosen image
       size: cover;
@@ -276,6 +279,12 @@ nav {
       transform: translateZ(-1px) scale(2);
     }
   }
+
+  @media (min-width: 48em) {
+    .container {
+      max-width: 100rem;
+    }
+  }
 }
 
 blog-post {
@@ -330,6 +339,160 @@ blog-post {
         background-color: #0275d8;
         border-color: #0275d8;
       }
+    }
+  }
+}
+
+.ddn-profile {
+  overflow: hidden;
+  
+  & > .card-img-top {
+    height: 100px;
+    background: {
+      image: url($background-url);
+      size: cover;
+      repeat: no-repeat;
+    }
+    white-space: nowrap;
+    
+    & > .card-title {
+      margin-top: 30px;
+      color: #fff;
+      font: {
+        size: 2em;
+      };
+    }
+    
+    & > .card-title,
+    & > .card-subtitle {
+      margin-left: 100px;
+      padding: .2em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    & > .card-subtitle {
+      font: {
+        weight: bold;
+      };
+    }
+    
+    // < XS
+    @media (max-width: 30em) {
+      & > .card-title {
+        margin-top: 40px;
+        font: {
+          size: 1.5em;
+        };
+      }
+    }
+    
+    @media (max-width: 30em) {
+      & > .card-title {
+        margin-top: 40px;
+        font: {
+          size: 1.5em;
+        };
+      }
+    }
+    
+    // SM
+    @media (min-width: 34em) {
+      
+    }
+    
+    // MD
+    @media (min-width: 48em) {
+      & {
+        white-space: normal;
+      }
+      
+      & > .card-title {
+        margin: 10px 0 0 45%;
+        font: {
+          size: 1.5em;
+        };
+      }
+      
+      & > .card-subtitle {
+        margin: 10px 0 0 0;
+        font: {
+          size: .9em;
+        };
+      }
+    }
+    
+    // LG
+    @media (min-width: 62em) {
+      & > .card-title {
+        margin: 40px 0 0 80px;
+      }
+    }
+    
+    // XL
+    @media (min-width: 75em) {
+      & {
+        white-space: nowrap;
+      }
+      
+      & > .card-title {
+        margin: 30px 0 0 0;
+        font: {
+          size: 2em;
+        };
+      }
+
+      & > .card-title,
+      & > .card-subtitle {
+        margin-left: 25%;
+      }
+    }
+  }
+  
+  .card-block:not(:first-child) {
+    & > .card-text {
+      margin-top: 25px;
+    }
+  }
+  
+  .ddn-profile-image {
+    float: left;
+    margin-top: 25px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    max-height: 75px;
+  }
+}
+
+.twitter-typeahead {
+  width: 100%;
+
+  .tt-hint {
+    color: #999
+  }
+
+  .tt-menu {
+    width: 350px;
+    margin: 12px 0;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .25rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    overflow: hidden;
+  }
+
+  .tt-empty,
+  .tt-suggestion {
+    padding: 3px 20px;
+  }
+
+  .tt-suggestion {
+    &:hover,
+    &.tt-cursor {
+      cursor: pointer;
+      color: #fff;
+      background-color: #0275d8;
     }
   }
 }

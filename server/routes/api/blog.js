@@ -1,10 +1,35 @@
 var express = require('express'),
-    busboy = require('busboy');
+    busboy = require('busboy'),
+    path = require('path'),
+    fs = require('fs');
 
 module.exports = (function() {
   this.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now());
     next();
+  });
+  
+  var posts;
+  
+  this.use(function fetchData(req, res, next) {
+    if (!posts) fs.readFile(path.join(__dirname, '../../test/data/posts.json'), 'utf8', function(err, data) {
+      if (err) throw err;
+      
+      posts = JSON.parse(data);
+      next();
+    });
+    else next();
+  });
+
+  this.get('/', function(req, res) {
+    console.log('Get posts: ', req.query.q);
+    
+    var q = req.query.q,
+        regex;
+        
+    res.json(q && (regex = new RegExp(q, 'gi')) ? posts.filter(function(value) {
+      return value && value.title && value.title.search(regex) >= 0;
+    }) : posts.slice(0));
   });
 
   this.post('/', function(req, res) {

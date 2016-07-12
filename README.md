@@ -1,12 +1,9 @@
 
-    ____________________________________________________________________________________________________
-          __                                                  _    _              ____                  
-        /    )   /                                            /  ,' /             /   )    /            
-    ----\-------/__----__------__------__----__---)__--------/_.'-------__-------/__ /----/----__----__-
-         \     /   ) /___)   /   )   /   ) /   ) /   ) ===  /  \       (_ `     /    )   /   /   ) /   )
-    _(____/___/___/_(___ ___/___/___/___/_(___(_/__________/____\_____(__)_____/____/___/___(___/_(___/_
-                           /       /                                                                 /  
-                          /       /                                                              (_ /   
+     __       __)                                                __             
+    (, )  |  /     ,                  ,           /)         (__/  )            
+       | /| / __    _/__/_  _ __       __     _/_(/    _       / _/_ _   __  _  
+       |/ |/ / (__(_(__(___(/_/ (_  _(_/ (_   (__/ )__(/_   ) /  (__(_(_/ (_/_)_
+       /  |                                                (_/                  
     ____________________________________________________________________________________________________
 
 
@@ -21,3 +18,5 @@ This chat example showcases how to use `socket.io` with a static `express` serve
     $ node server.js
 
 Once the server is running, open the project in the shape of 'https://projectname-username.c9.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+
+## Docking the container

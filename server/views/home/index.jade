@@ -4,13 +4,16 @@ block main
   .container
     .row
       .col-md-8.col-lg-offset-2.col-lg-6
-        blog#home(collection='home')
-      .col-md-4.col-lg-3
-        .card
-          img.card-img-top(src='//unsplash.it/500/250/?image=64', alt='My image', height='100%', width='100%')
+        blog#main(collection='home')
+      .col-md-4.col-lg-4
+        .card.ddn-profile
+          .card-block.card-img-top
+            img.ddn-profile-image(src='https://scontent-ams3-1.cdninstagram.com/hphotos-xap1/t51.2885-19/s150x150/12407526_573054112847314_1507795626_a.jpg')
+            h4.card-title Kristina Sheppard
+            h6.card-subtitle Mrs Cool Calm & Confident
           .card-block
-            h4.card-title About me
-            p.card-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, tempora voluptatum porro.
+            .card-text.text-center
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac neque a lacus luctus bibendum sit amet ac nisl. Cras sed suscipit erat, at vehicula ante.
           #about-me-links.card-block
             a.card-link(href='#')
               i.fa.fa-instagram
@@ -25,7 +28,7 @@ block main
         .card
           .card-block
             h4.card-title Find it...
-            input.form-control(type='text', placeholder="Search here...")
+            blog-search
         .card
           .card-block
             h4.card-title Recently...

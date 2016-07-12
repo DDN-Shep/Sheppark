@@ -1,5 +1,5 @@
 # Dockerfile to run a Sheppark web server with NodeJs build agents
-# Based on the Ubuntu 14.04 (LTS) image
+# Based upon the Ubuntu 14.04 (LTS) image
 
 FROM ubuntu:14.04
 
@@ -51,16 +51,18 @@ EXPOSE 80
 # Run Sheppark web server via Forever
 CMD ["forever", "-c", "node --harmony", "server.js"]
 
-# Or replace aboove with this to run directly via Node
+# Or replace the above CMD with this to run directly via Node
 #CMD ["node", "server"]
 
 
 
-# Start Sheppark Web Server
+# Build the Sheppark web server
+# ...
+
+# Start the Sheppark web server
 # sudo docker stop sheppark-web-server && docker rm sheppark-web-server
-# sudo docker run -dit -p 80:3000 -v /var/data/sheppark:/data/sheppark --name sheppark-web-server andyshep/sheppark-web-server
 # sudo docker run -dit -p 80:80 -v /var/data/sheppark:/data/sheppark --name sheppark-web-server andyshep/sheppark-web-server
 
-# To inspect the docker process
+# Inspect the Sheppark web server container process
 # PID=$(sudo docker inspect --format {{.State.Pid}} sheppark-web-server) && \ 
 # sudo nsenter --target $PID --mount --uts --ipc --net --pid
